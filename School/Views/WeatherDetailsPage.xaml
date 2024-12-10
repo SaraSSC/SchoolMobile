@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="School.Views.WeatherDetailsPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:prism="http://prismlibrary.com"
+	Title="{Binding Title}"
+	prism:ViewModelLocator.AutowireViewModel="True">
+	<ScrollView Margin="0,40,0,0">
+		<StackLayout>
+			<Grid Margin="50,0,50,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="5*" />
+					<ColumnDefinition Width="5*" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="100" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<Label
+					Grid.Row="0"
+					Grid.ColumnSpan="2"
+					HorizontalTextAlignment="Center"
+					VerticalOptions="Center">
+					<Label.FormattedText>
+						<FormattedString>
+							<Span FontSize="18" Text="{Binding Weather.Name}" />
+							<Span FontSize="18" Text="  |  " />
+							<Span FontSize="18" Text="{Binding Weather.Sys.Country}" />
+						</FormattedString>
+					</Label.FormattedText>
+				</Label>
+				<Label
+					Grid.Row="1"
+					Grid.ColumnSpan="2"
+					FontSize="18"
+					HorizontalOptions="Center"
+					Text="{Binding CurrentTime}"
+					TextColor="{Binding ColorBrown}"
+					VerticalOptions="Center" />
+				<Image
+					Grid.Row="2"
+					Grid.ColumnSpan="2"
+					Margin="0,0,0,-20"
+					HorizontalOptions="CenterAndExpand"
+					Source="{Binding IconPath}"
+					WidthRequest="100" />
+				<Label
+					Grid.Row="3"
+					Grid.ColumnSpan="2"
+					FontAttributes="Bold"
+					FontSize="26"
+					HorizontalOptions="Center"
+					Text="{Binding Weather.Weather[0].Main}"
+					VerticalOptions="Center" />
+				<Label
+					Grid.Row="4"
+					Grid.ColumnSpan="2"
+					FontSize="20"
+					HorizontalOptions="Center"
+					Text="{Binding Weather.Weather[0].Description}"
+					TextColor="{Binding ColorBrown}"
+					VerticalOptions="Center" />
+				<Label
+					Grid.Row="5"
+					Grid.ColumnSpan="2"
+					Margin="0,20,0,30"
+					HorizontalTextAlignment="Center"
+					VerticalOptions="Center">
+					<Label.FormattedText>
+						<FormattedString>
+							<Span
+								FontAttributes="Bold"
+								FontSize="20"
+								Text="{Binding Weather.Main.Temp}"
+								TextColor="{Binding ColorBrown}" />
+							<Span
+								FontAttributes="Bold"
+								FontSize="20"
+								Text="º"
+								TextColor="{Binding ColorBrown}" />
+						</FormattedString>
+					</Label.FormattedText>
+				</Label>
+
+				<Label
+					Grid.Row="6"
+					Grid.Column="0"
+					HorizontalTextAlignment="Center"
+					VerticalOptions="Center">
+					<Label.FormattedText>
+						<FormattedString>
+							<Span FontSize="13" Text="Max Temp      " />
+							<Span
+								FontSize="16"
+								Text="{Binding Weather.Main.Temp_max}"
+								TextColor="{Binding ColorBrown}" />
+							<Span
+								FontSize="16"
+								Text="º"
+								TextColor="{Binding ColorBrown}" />
+						</FormattedString>
+					</Label.FormattedText>
+				</Label>
+				<Label
+					Grid.Row="6"
+					Grid.Column="1"
+					HorizontalTextAlignment="Center"
+					VerticalOptions="Center">
+					<Label.FormattedText>
+						<FormattedString>
+							<Span FontSize="13" Text="Clouds      " />
+							<Span
+								FontSize="16"
+								Text="{Binding Weather.Clouds.All}"
+								TextColor="{Binding ColorBrown}" />
+							<Span
+								FontSize="16"
+								Text="%"
+								TextColor="{Binding ColorBrown}" />
+						</FormattedString>
+					</Label.FormattedText>
+				</Label>
+				<Label
+					Grid.Row="7"
+					Grid.Column="0"
+					HorizontalTextAlignment="Center"
+					VerticalOptions="Center">
+					<Label.FormattedText>
+						<FormattedString>
+							<Span FontSize="13" Text="Min Temp      " />
+							<Span
+								FontSize="16"
+								Text="{Binding Weather.Main.Temp_min}"
+								TextColor="{Binding ColorBrown}" />
+							<Span
+								FontSize="16"
+								Text="º"
+								TextColor="{Binding ColorBrown}" />
+						</FormattedString>
+					</Label.FormattedText>
+				</Label>
+				<Label
+					Grid.Row="7"
+					Grid.Column="1"
+					HorizontalTextAlignment="Center"
+					VerticalOptions="Center">
+					<Label.FormattedText>
+						<FormattedString>
+							<Span FontSize="13" Text="Humidity      " />
+							<Span
+								FontSize="16"
+								Text="{Binding Weather.Main.Humidity}"
+								TextColor="{Binding ColorBrown}" />
+							<Span
+								FontSize="16"
+								Text="%"
+								TextColor="{Binding ColorBrown}" />
+						</FormattedString>
+					</Label.FormattedText>
+				</Label>
+
+			</Grid>
+			<ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="EndAndExpand" />
+			<Label
+				Margin="10,0,0,0"
+				FontSize="13"
+				Text="PUB"
+				TextColor="{Binding ColorBrown}" />
+
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

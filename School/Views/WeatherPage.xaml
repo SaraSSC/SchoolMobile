@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="School.Views.WeatherPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+	xmlns:prism="http://prismlibrary.com"
+	Title="{Binding Title}"
+	prism:ViewModelLocator.AutowireViewModel="True">
+
+	<ContentPage.Resources>
+		<StyleSheetExtension>
+			<![CDATA[
+			#Search{
+				box-shadow: 1px 2px 1px 2px;
+				background-color: white;
+			}]]>
+		</StyleSheetExtension>
+	</ContentPage.Resources>
+	<ScrollView>
+		<StackLayout>
+			<Image
+				Margin="0,0,0,40"
+				HorizontalOptions="CenterAndExpand"
+				Source="ic_weather_banner.png"
+				WidthRequest="600" />
+			<Grid Margin="30,0,30,0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="8*" />
+					<ColumnDefinition Width="2*" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<Label
+					Grid.Row="0"
+					Grid.ColumnSpan="2"
+					Margin="0,0,0,15"
+					FontSize="20"
+					Text="Search City"
+					TextColor="{Binding ColorBrown}" />
+
+				<SearchBar
+					x:Name="Search"
+					Grid.Row="1"
+					Grid.Column="0"
+					Margin="0,0,15,40"
+					Placeholder="Type city name"
+					Text="{Binding Search}" />
+				<Button
+					Grid.Row="1"
+					Grid.Column="1"
+					Margin="0,0,0,40"
+					BackgroundColor="RoyalBlue"
+					Command="{Binding SearchCommand}"
+					Text="GO"
+					TextColor="White" />
+
+				<Label
+					Grid.Row="2"
+					Grid.ColumnSpan="2"
+					Margin="0,0,0,15"
+					FontSize="20"
+					Text="Select City"
+					TextColor="{Binding ColorBrown}" />
+				<Picker
+					Title="Select a country"
+					Grid.Row="3"
+					Grid.Column="0"
+					Margin="0,0,15,30"
+					ItemsSource="{Binding Countries}"
+					SelectedItem="{Binding SelectedCountry}" />
+				<Button
+					Grid.Row="3"
+					Grid.Column="1"
+					Margin="0,0,0,30"
+					BackgroundColor="RoyalBlue"
+					Command="{Binding CountryCommand}"
+					Text="OK"
+					TextColor="White" />
+				<Picker
+					Title="Select a city"
+					Grid.Row="4"
+					Grid.Column="0"
+					Margin="0,0,15,40"
+					ItemsSource="{Binding Cities}"
+					SelectedItem="{Binding SelectedCity}" />
+				<Button
+					Grid.Row="4"
+					Grid.Column="1"
+					Margin="0,0,0,40"
+					BackgroundColor="RoyalBlue"
+					Command="{Binding CityCommand}"
+					Text="GO"
+					TextColor="White" />
+			</Grid>
+			<Label
+				Margin="10,0,0,0"
+				FontSize="13"
+				Text="PUB"
+				TextColor="{Binding ColorBrown}" />
+			<Image
+				Margin="0,0,0,0"
+				HorizontalOptions="Center"
+				Source="ic_banner_welcome2.jpg"
+				VerticalOptions="EndAndExpand"
+				WidthRequest="500" />
+			<ActivityIndicator IsRunning="{Binding IsRunning}" VerticalOptions="EndAndExpand" />
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

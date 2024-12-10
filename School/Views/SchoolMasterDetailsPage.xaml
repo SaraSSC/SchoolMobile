@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+	x:Class="School.Views.SchoolMasterDetailsPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:prism="http://prismlibrary.com"
+	prism:ViewModelLocator.AutowireViewModel="True">
+
+	<MasterDetailPage.Master>
+		<ContentPage Title="Menu" IconImageSource="ic_action_menu.png">
+			<ContentPage.Padding>
+				<OnPlatform x:TypeArguments="Thickness">
+					<On Platform="iOS" Value="0, 20, 0, 0" />
+					<On Platform="Android" Value="0, 0, 0, 0" />
+				</OnPlatform>
+			</ContentPage.Padding>
+			<StackLayout Padding="20">
+				<!--  Menu content  -->
+				<Image
+					Margin="0,0,0,25"
+					HorizontalOptions="Start"
+					Source="ic_logo_menu.png"
+					WidthRequest="400" />
+				<ListView
+					BackgroundColor="Transparent"
+					HasUnevenRows="True"
+					ItemsSource="{Binding Menus}"
+					SeparatorVisibility="None">
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<ViewCell>
+								<Grid Margin="10,0,10,25">
+									<Grid.GestureRecognizers>
+										<TapGestureRecognizer Command="{Binding SelectMenuCommand}" />
+									</Grid.GestureRecognizers>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="2*" />
+										<ColumnDefinition Width="10*" />
+									</Grid.ColumnDefinitions>
+									<Image
+										Grid.Column="0"
+										HeightRequest="28"
+										HorizontalOptions="Center"
+										Source="{Binding Icon}"
+										VerticalOptions="Center" />
+									<Label
+										Grid.Column="1"
+										FontAttributes="Bold"
+										FontSize="20"
+										Text="{Binding Title}"
+										VerticalOptions="Center" />
+
+								</Grid>
+							</ViewCell>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</StackLayout>
+		</ContentPage>
+	</MasterDetailPage.Master>
+
+</MasterDetailPage>

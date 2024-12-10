@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+	x:Class="School.App"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:prism="http://prismlibrary.com">
+	<Application.Resources>
+
+		<!--  Application resource dictionary  -->
+		<ResourceDictionary>
+
+			<!--  School API  -->
+			<x:String x:Key="ApiBaseUrl">https://dzzqk7t1-44398.uks1.devtunnels.ms</x:String>
+			<x:String x:Key="ApiCreateToken">/Accounts/CreateToken</x:String>
+			<x:String x:Key="ApiSchoolPrefix">/api</x:String>
+			<x:String x:Key="ApiSchoolStudent">/GetStudentByUserName</x:String>
+			<x:String x:Key="ApiSchoolStudentCourses">/GetStudentCourses</x:String>
+			<x:String x:Key="ApiSchoolStudentEvaluations">/GetStudentEvaluations</x:String>
+
+			<!--  CountriesNow API  -->
+			<x:String x:Key="ApiCountriesBaseUrl">https://countriesnow.space</x:String>
+			<x:String x:Key="ApiCountriesPrefix">/api/v0.1</x:String>
+			<x:String x:Key="ApiCountriesAll">/countries/capital</x:String>
+
+			<x:String x:Key="ApiCitiesBaseUrl">https://countriesnow.space</x:String>
+			<x:String x:Key="ApiCitiesPrefix">/api/v0.1</x:String>
+			<x:String x:Key="ApiCitiesAll">/countries/cities</x:String>
+
+			<!--  OpenWeatherMap API  -->
+			<x:String x:Key="ApiWeatherBaseUrl">https://api.openweathermap.org</x:String>
+			<x:String x:Key="ApiWeatherPrefix">/data/2.5</x:String>
+			<x:String x:Key="ApiWeatherCity">/weather</x:String>
+			<x:String x:Key="ApiWeatherKey">7e1a236db06e57cb39299f480c50eda1</x:String>
+
+			<x:String x:Key="UrlIconWeather">http://openweathermap.org/img/w</x:String>
+
+			<!--  Colours  -->
+			<x:String x:Key="RoyalBlue">#4169E1</x:String>
+			<x:String x:Key="ColorBrown">#674f2d</x:String>
+			<x:String x:Key="White">#FFFFFF</x:String>
+			<x:String x:Key="Black">#000000</x:String>
+			<!--  Styles  -->
+			<Style TargetType="Entry">
+				<Setter Property="BackgroundColor" Value="WhiteSmoke" />
+			</Style>
+		</ResourceDictionary>
+	</Application.Resources>
+</prism:PrismApplication>

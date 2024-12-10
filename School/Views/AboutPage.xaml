@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="School.Views.AboutPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:prism="http://prismlibrary.com"
+	Title="About"
+	prism:ViewModelLocator.AutowireViewModel="True"
+	BackgroundImageSource="coverpage.png"
+	WidthRequest="10">
+	
+		<ContentPage.Resources>
+			<Style x:Key="opacityStyle" TargetType="Frame">
+				<Setter Property="Opacity" Value="0.8" />
+			</Style>
+		</ContentPage.Resources>
+	<ContentPage.Content>
+		
+		<StackLayout Margin="10,20,20,20">
+
+			<Frame
+				Margin="0,150,0,0"
+				CornerRadius="20"
+				HorizontalOptions="Center"
+				Style="{StaticResource opacityStyle}"
+				VerticalOptions="CenterAndExpand">
+				<Label
+					FontAttributes="Bold"
+					FontSize="20"
+					HorizontalOptions="Center"
+					HorizontalTextAlignment="Center"
+					Text="{Binding Information}"
+					VerticalOptions="Center"
+					VerticalTextAlignment="Center" />
+
+			</Frame>
+
+
+			<Image
+				Margin="0,-50,0,0"
+				HorizontalOptions="CenterAndExpand"
+				Source="{Binding Logo}"
+				VerticalOptions="StartAndExpand" />
+		</StackLayout>
+
+	</ContentPage.Content>
+</ContentPage>

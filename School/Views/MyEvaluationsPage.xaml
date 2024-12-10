@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="School.Views.MyEvaluationsPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:prism="http://prismlibrary.com"
+	Title="My Courses List"
+	prism:ViewModelLocator.AutowireViewModel="True">
+
+	<ScrollView>
+		<StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+			<SearchBar
+				Margin="5,2,20,0"
+				Placeholder="Search"
+				SearchCommand="{Binding SearchCommand}"
+				Text="{Binding Search}" />
+
+			<Label
+				Margin="5,0,20,0"
+				HorizontalTextAlignment="Center"
+				Text="{Binding NoCoursesFound}"
+				VerticalOptions="Center" />
+
+			<!--  List Content  -->
+			<CollectionView Margin="0,0,0,0" ItemsSource="{Binding Courses}">
+				<CollectionView.ItemsLayout>
+					<GridItemsLayout Orientation="Vertical" />
+				</CollectionView.ItemsLayout>
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Grid>
+							<Grid.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding SelectCourseCommand}" />
+							</Grid.GestureRecognizers>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="7*" />
+								<ColumnDefinition Width="1*" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="125" />
+							</Grid.RowDefinitions>
+							<StackLayout
+								Grid.Column="0"
+								Margin="25,0,0,0"
+								VerticalOptions="Center">
+								<Label
+									FontSize="12"
+									HorizontalTextAlignment="Start"
+									LineBreakMode="TailTruncation"
+									Text="{Binding Code}" />
+								<Label
+									FontAttributes="Bold"
+									FontSize="18"
+									HorizontalTextAlignment="Start"
+									LineBreakMode="TailTruncation"
+									Text="{Binding Name}"
+									TextColor="#674f2d" />
+								<Label
+									FontSize="12"
+									HorizontalTextAlignment="Start"
+									Text="{Binding Area}" />
+								<Label FontSize="14" HorizontalTextAlignment="Start">
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="{Binding Duration}" />
+											<Span Text="H" />
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+
+								<Rectangle BackgroundColor="Black" WidthRequest="8" />
+
+							</StackLayout>
+							<Image
+								Grid.Column="1"
+								Margin="5,0,25,0"
+								HorizontalOptions="Center"
+								Source="ic_more_vert"
+								VerticalOptions="Center" />
+						</Grid>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+			<ActivityIndicator
+				IsRunning="{Binding IsRunning}"
+				VerticalOptions="Center"
+				Color="Goldenrod" />
+		</StackLayout>
+
+	</ScrollView>
+</ContentPage>

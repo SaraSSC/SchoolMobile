@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	x:Class="School.Views.MyEvaluationDetailsPage"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:prism="http://prismlibrary.com"
+	Title="{Binding Title}"
+	prism:ViewModelLocator.AutowireViewModel="True">
+	<ContentPage.Resources>
+		<Style x:Key="ColorBrown" TargetType="Label">
+			<Setter Property="TextColor" Value="#674f2d" />
+		</Style>
+		<Style x:Key="ColorGold" TargetType="ActivityIndicator">
+			<Setter Property="Color" Value="Goldenrod" />
+		</Style>
+	</ContentPage.Resources>
+
+	<ScrollView>
+		<StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+			<ActivityIndicator
+				HorizontalOptions="Center"
+				IsRunning="{Binding IsRunning}"
+				VerticalOptions="Center"
+				Color="{Binding ColorGold}" />
+			<Label
+				FontSize="Body"
+				HorizontalOptions="Center"
+				HorizontalTextAlignment="Center"
+				Text="{Binding NoEval}"
+				VerticalOptions="Center" />
+			<CollectionView ItemsSource="{Binding Evaluations}">
+				<CollectionView.ItemsLayout>
+					<GridItemsLayout Orientation="Vertical" />
+				</CollectionView.ItemsLayout>
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="3*" />
+								<ColumnDefinition Width="1*" />
+								<ColumnDefinition Width="1.3*" />
+							</Grid.ColumnDefinitions>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="125" />
+							</Grid.RowDefinitions>
+
+							<StackLayout
+								Grid.Column="0"
+								Margin="25,0,0,0"
+								VerticalOptions="Center">
+
+								<Label
+									FontSize="12"
+									HorizontalTextAlignment="Start"
+									LineBreakMode="TailTruncation"
+									Text="{Binding Code}" />
+								<Label
+									FontAttributes="Bold"
+									FontSize="18"
+									HorizontalTextAlignment="Start"
+									LineBreakMode="TailTruncation"
+									Text="{Binding Name}"
+									TextColor="{Binding ColorBrown}" />
+								<Label
+									FontSize="14"
+									HorizontalTextAlignment="Start"
+									TextColor="{Binding ColorBrown}">
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="{Binding Duration}" />
+											<Span Text="H" />
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+							</StackLayout>
+
+							<StackLayout
+								Grid.Column="1"
+								Margin="5,0,5,0"
+								VerticalOptions="Center">
+								<Label
+									FontSize="12"
+									HorizontalTextAlignment="Center"
+									LineBreakMode="TailTruncation"
+									Text="Absences" />
+								<Label
+									FontSize="14"
+									HorizontalTextAlignment="Center"
+									TextColor="{Binding ColorBrown}">
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="{Binding HoursAbsence}" />
+											<Span Text="H" />
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+								<Label
+									FontSize="14"
+									HorizontalTextAlignment="Center"
+									TextColor="{Binding ColorBrown}">
+									<Label.FormattedText>
+										<FormattedString>
+											<Span Text="{Binding PercentageAbsence}" />
+											<Span Text="%" />
+										</FormattedString>
+									</Label.FormattedText>
+								</Label>
+							</StackLayout>
+
+							<StackLayout
+								Grid.Column="2"
+								Margin="0,0,25,0"
+								VerticalOptions="Center">
+								<Label
+									FontAttributes="Bold"
+									FontSize="20"
+									HorizontalTextAlignment="Center"
+									LineBreakMode="TailTruncation"
+									Text="{Binding Grade}"
+									TextColor="{Binding ColorBrown}" />
+								<Label
+									FontSize="12"
+									HorizontalTextAlignment="Center"
+									LineBreakMode="TailTruncation"
+									Text="{Binding Date}" />
+							</StackLayout>
+						</Grid>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+
+		</StackLayout>
+	</ScrollView>
+
+</ContentPage>
